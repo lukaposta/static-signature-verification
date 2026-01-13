@@ -234,7 +234,7 @@ python app.py
 
 ```
 
-Then open: <a href="http://127.0.0.1:5000" target="_blank">http://127.0.0.1:5000</a>
+Then open in your browser: http://127.0.0.1:5000
 
 
 
