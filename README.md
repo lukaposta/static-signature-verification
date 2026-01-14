@@ -279,11 +279,6 @@ code/models/svm_person_{id}.joblib
 
 ---
 
-## License
-
-This project is released under the **MIT License**.
-
----
 
 ## Academic Context
 
