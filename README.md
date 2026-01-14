@@ -41,7 +41,6 @@ Dataset files are **not included** in this repository due to size and licensing 
 The expected dataset structure is:
 
 ```
-
 dataset55/
 ├── 001/
 │   ├── genuine signatures
@@ -50,7 +49,6 @@ dataset55/
 ├── 002/
 ├── 002_forg/
 ...
-
 ```
 
 A CSV index (`data.csv`) is generated to manage train/test splits.
@@ -103,9 +101,7 @@ Each model outputs a **decision score**, not a probability.
 A signature is accepted if:
 
 ```
-
 decision_score ≥ threshold
-
 ```
 
 By default, the threshold is set to `0.0`, which corresponds to the natural SVM decision boundary.
@@ -117,9 +113,7 @@ The displayed confidence is **not a probability**.
 It is computed by applying a **sigmoid transformation** to the SVM decision score:
 
 ```
-
 p = 1 / (1 + exp(-score))
-
 ```
 
 - If the decision is ACCEPT: `confidence = p × 100%`
@@ -154,6 +148,39 @@ A lightweight **Flask-based web application** is provided for interactive testin
 **Rejected forged signature**
 
 ![Reject example](https://github.com/user-attachments/assets/28dfc0f7-c9d5-4872-bb30-83f3eaa04ab0)
+
+
+---
+
+## Training Setup and Baseline Results
+
+The following results are obtained by running the training and evaluation script:
+
+
+
+```
+python hog_svm_train_eval.py
+```
+
+
+The experiment follows a **writer-dependent protocol** using the CEDAR dataset with **55 enrolled users**.
+
+### Training configuration
+
+- Number of genuine signatures per user (training): **18**
+- Remaining genuine signatures: used for testing (**6 per user**)
+- Forged signatures: used exclusively for testing
+- Feature representation: **Histogram of Oriented Gradients (HOG)**
+- Classifier: **Support Vector Machine (RBF kernel)**
+- Decision threshold: **0.0** (default SVM decision boundary)
+
+### Aggregated baseline results (test set)
+
+- False Acceptance Rate (FAR): **≈ 2.8%**
+- False Rejection Rate (FRR): **≈ 17.6%**
+- Overall accuracy: **≈ 94.2%**
+
+The low FAR indicates strong resistance to forged signature acceptance, while the higher FRR reflects a conservative decision strategy typical for writer-dependent systems trained with a limited number of genuine samples.
 
 
 ---
@@ -194,23 +221,20 @@ These results indicate strong separability between genuine and forged signatures
 ## Repository Structure
 
 ```
-
 code/
 ├── dataset55/              # CEDAR signature dataset (files excluded from the repository due to licensing and size)
 ├── models/                 # Trained writer-dependent SVM models (svm_person_{id}.joblib); not included in the repository
 ├── templates/
-│   └── index.html           # Web UI
+│   └── index.html          # Web UI
 ├── app.py                  # Flask web application
 ├── data.csv                # CSV index of the dataset with image paths, labels, and train/test split information
-├── hog_svm_train_eval.py    # Training and evaluation
-├── make_csv.py              # Dataset CSV generation
-├── plot_roc_pr.py           # ROC / PR plotting
+├── hog_svm_train_eval.py   # Training and evaluation
+├── make_csv.py             # Dataset CSV generation
+├── plot_roc_pr.py          # ROC / PR plotting
 ├── preprocess.py           # Image preprocessing pipeline
 ├── preview_preprocess.py   # Script for previewing intermediate preprocessing outputs for debugging and validation
-├── results_per_person.csv   # Evaluation summary
-├── verify_one.py            # CLI verification script
-
-
+├── results_per_person.csv  # Evaluation summary
+├── verify_one.py           # CLI verification script
 ```
 
 ---
@@ -222,9 +246,7 @@ Python 3.10 or newer is recommended.
 Install dependencies:
 
 ```
-
 pip install -r requirements.txt
-
 ```
 
 ---
@@ -234,9 +256,7 @@ pip install -r requirements.txt
 From the `code` directory:
 
 ```
-
 python app.py
-
 ```
 
 Then open in your browser: http://127.0.0.1:5000
@@ -246,9 +266,7 @@ Then open in your browser: http://127.0.0.1:5000
 Trained models must be placed in:
 
 ```
-
 code/models/svm_person_{id}.joblib
-
 ```
 
 ---
