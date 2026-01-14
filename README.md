@@ -196,7 +196,7 @@ Evaluation is performed on a held-out test set and aggregated across all persons
 </p>
 
 
-### Precision–Recall curve
+### Precision-Recall curve
 
 Average Precision (AP) ≈ 0.92
 
