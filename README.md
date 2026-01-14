@@ -192,7 +192,7 @@ Evaluation is performed on a held-out test set and aggregated across all persons
 ### Confusion matrix (aggregated test set)
 
 <p>
-  <img src="https://github.com/user-attachments/assets/9a774d11-9cd6-4d15-9b98-8435509bfa11" width="600">
+  <img alt="confusion_matrix" src="https://github.com/user-attachments/assets/ed93be81-b4ec-46ad-bac6-8b475aaf9c2f" width="600">
 </p>
 
 
@@ -201,7 +201,7 @@ Evaluation is performed on a held-out test set and aggregated across all persons
 Average Precision (AP) ≈ 0.92
 
 <p>
-  <img src="https://github.com/user-attachments/assets/148bd542-d4e6-49e5-ac2b-e610bb4d1efa" width="600">
+  <img alt="ap" src="https://github.com/user-attachments/assets/148bd542-d4e6-49e5-ac2b-e610bb4d1efa" width="600">
 </p>
 
 
@@ -210,7 +210,7 @@ Average Precision (AP) ≈ 0.92
 ROC AUC ≈ 0.97
 
 <p>
-  <img src="https://github.com/user-attachments/assets/bdb8d02c-bb8b-4bb4-8fd9-6d397a46e54f" width="600">
+  <img alt="roc auc" src="https://github.com/user-attachments/assets/bdb8d02c-bb8b-4bb4-8fd9-6d397a46e54f" width="600">
 </p>
 
 
