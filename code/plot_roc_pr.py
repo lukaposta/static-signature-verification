@@ -71,7 +71,7 @@ def main():
             np.zeros((len(X_neg),), dtype=int)
         ])
 
-        # decision_function score (veci score = vise "genuine")
+        # decision_function score (veći score = više "genuine")
         scores = clf.decision_function(X_test)
 
         # binarna odluka na pragu 0 (isti princip kao u trening skripti)
@@ -116,23 +116,36 @@ def main():
     plt.savefig(pr_path, dpi=200, bbox_inches="tight")
     plt.close()
 
-    # Confusion matrix heatmap (matplotlib)
-    tn, fp, fn, tp = confusion_matrix(y_true_all, y_pred_all, labels=[0, 1]).ravel()
-    cm = np.array([[tn, fp],
-                   [fn, tp]])
+    # Confusion matrix heatmap (matplotlib + colorbar)
+    tn, fp, fn, tp = confusion_matrix(
+        y_true_all, y_pred_all, labels=[0, 1]
+    ).ravel()
 
-    plt.figure()
-    plt.imshow(cm)
+    cm = np.array([[tn, fp],
+                [fn, tp]])
+
+    plt.figure(figsize=(6, 5))
+    im = plt.imshow(cm, cmap="viridis", vmin=0)
+
+    # Okomita legenda boja
+    cbar = plt.colorbar(im)
+
+    # Brojevi u ćelijama
     for (i, j), v in np.ndenumerate(cm):
-        plt.text(j, i, str(v), ha="center", va="center")
+        plt.text(j, i, str(v),
+                ha="center", va="center",
+                color="black", fontsize=12)
+
     plt.xticks([0, 1], ["Forged", "Genuine"])
     plt.yticks([0, 1], ["Forged", "Genuine"])
     plt.xlabel("Predicted")
     plt.ylabel("True")
     plt.title("Matrica zabune (agregirano, test)")
+
     cm_path = os.path.join(out_dir, "confusion_matrix.png")
     plt.savefig(cm_path, dpi=200, bbox_inches="tight")
     plt.close()
+
 
     print("Gotovo.")
     print("Osoba korišteno:", used_persons, "| Nedostaje modela:", missing_models)
