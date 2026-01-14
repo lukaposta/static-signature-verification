@@ -196,17 +196,20 @@ These results indicate strong separability between genuine and forged signatures
 ```
 
 code/
-├── models/                 # Trained writer-dependent SVM models (svm_person_{id}.joblib); not included in the repository
 ├── dataset55/              # CEDAR signature dataset (files excluded from the repository due to licensing and size)
-├── app.py                  # Flask web application
-├── preprocess.py           # Image preprocessing pipeline
-├── verify_one.py            # CLI verification script
-├── hog_svm_train_eval.py    # Training and evaluation
-├── plot_roc_pr.py           # ROC / PR plotting
-├── make_csv.py              # Dataset CSV generation
+├── models/                 # Trained writer-dependent SVM models (svm_person_{id}.joblib); not included in the repository
 ├── templates/
 │   └── index.html           # Web UI
+├── app.py                  # Flask web application
+├── data.csv                # CSV index of the dataset with image paths, labels, and train/test split information
+├── hog_svm_train_eval.py    # Training and evaluation
+├── make_csv.py              # Dataset CSV generation
+├── plot_roc_pr.py           # ROC / PR plotting
+├── preprocess.py           # Image preprocessing pipeline
+├── preview_preprocess.py   # Script for previewing intermediate preprocessing outputs for debugging and validation
 ├── results_per_person.csv   # Evaluation summary
+├── verify_one.py            # CLI verification script
+
 
 ```
 
