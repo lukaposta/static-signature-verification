@@ -196,6 +196,8 @@ These results indicate strong separability between genuine and forged signatures
 ```
 
 code/
+├── models/                 # Trained writer-dependent SVM models (svm_person_{id}.joblib); not included in the repository
+├── dataset55/              # CEDAR signature dataset (files excluded from the repository due to licensing and size)
 ├── app.py                  # Flask web application
 ├── preprocess.py           # Image preprocessing pipeline
 ├── verify_one.py            # CLI verification script
